@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2one — Work</title>
+  <meta name="description" content="Selected design, product, and branding work from 2one Solutions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --n0:#ffffff; --n50:#fafafa; --n100:#f4f4f4; --n200:#e4e4e4; --n300:#d1d1d1;
+      --n400:#a3a3a3; --n500:#737373; --n600:#404040; --n700:#2e2e2e; --n900:#171717; --n950:#000000;
+      --radius-sm:4px; --radius-md:6px; --radius-lg:8px; --radius-xl:12px; --radius-2xl:16px; --radius-full:999px;
+      --font-heading:"Satoshi","Inter",ui-sans-serif,system-ui,sans-serif;
+      --font-body:"Inter",ui-sans-serif,system-ui,sans-serif;
+      --maxw:1180px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:var(--font-body); color:var(--n950); background:var(--n50);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; line-height:1.6;
+    }
+    h1,h2,h3,h4{font-family:var(--font-heading); font-weight:700; letter-spacing:-0.02em; line-height:1.15; margin:0;}
+    a{color:inherit;}
+    ::selection{background:var(--n950); color:var(--n0);}
+    *{scrollbar-width:thin; scrollbar-color:var(--n300) transparent;}
+
+    /* ---- Nav ---- */
+    .nav{position:sticky; top:0; z-index:50; background:rgba(250,250,250,.82); backdrop-filter:saturate(140%) blur(12px); border-bottom:1px solid var(--n200);}
+    .nav-inner{max-width:var(--maxw); margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px;}
+    .brand{display:flex; align-items:center; gap:12px; font-family:var(--font-heading); font-weight:700; font-size:16px; letter-spacing:-0.02em;}
+    .brand .dot{width:24px;height:24px;border-radius:var(--radius-md); background:var(--n950); color:var(--n0); display:grid;place-items:center; font-size:11px; font-weight:700;}
+    .nav-links{display:flex; gap:8px; align-items:center;}
+    .nav-links a{font-size:14px; color:var(--n500); text-decoration:none; padding:6px 10px; border-radius:var(--radius-md); transition:.15s;}
+    .nav-links a:hover{color:var(--n950); background:var(--n100);}
+    .nav-links a.cta{background:var(--n950); color:var(--n0);}
+    .nav-links a.cta:hover{background:var(--n700);}
+
+    /* ---- Layout ---- */
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+    section{scroll-margin-top:72px;}
+
+    /* ---- Hero ---- */
+    .hero{padding:88px 0 40px;}
+    .eyebrow{display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--n500); border:1px solid var(--n200); background:var(--n0); padding:6px 12px; border-radius:var(--radius-full);}
+    .hero h1{font-size:clamp(38px,6vw,68px); margin:22px 0 0; max-width:16ch;}
+    .hero p{font-size:clamp(16px,2vw,20px); color:var(--n600); max-width:58ch; margin:20px 0 0;}
+    .stats{display:flex; flex-wrap:wrap; gap:40px; margin-top:44px; padding-top:32px; border-top:1px solid var(--n200);}
+    .stat .num{font-family:var(--font-heading); font-weight:700; font-size:34px; letter-spacing:-0.02em;}
+    .stat .lbl{font-size:13px; color:var(--n500); margin-top:2px;}
+
+    /* ---- Controls ---- */
+    .controls{position:sticky; top:57px; z-index:40; background:rgba(250,250,250,.9); backdrop-filter:blur(10px); padding:20px 0 16px; border-bottom:1px solid var(--n200); margin-top:56px;}
+    .controls-row{display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;}
+    .chips{display:flex; flex-wrap:wrap; gap:8px;}
+    .chip{font-size:13px; font-weight:500; padding:8px 14px; border-radius:var(--radius-full); border:1px solid var(--n200); background:var(--n0); color:var(--n600); cursor:pointer; transition:.15s; display:inline-flex; align-items:center; gap:7px;}
+    .chip:hover{border-color:var(--n400); color:var(--n950);}
+    .chip.active{background:var(--n950); color:var(--n0); border-color:var(--n950);}
+    .chip .cnt{font-size:11px; opacity:.6;}
+    .search{position:relative;}
+    .search input{font-family:var(--font-body); font-size:14px; padding:9px 14px 9px 36px; border:1px solid var(--n200); border-radius:var(--radius-full); background:var(--n0); width:220px; outline:none; transition:.15s;}
+    .search input:focus{border-color:var(--n950); width:260px;}
+    .search svg{position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--n400);}
+
+    /* ---- Grid ---- */
+    .meta-line{display:flex; justify-content:space-between; align-items:baseline; margin:28px 0 18px; color:var(--n500); font-size:13px;}
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:20px; padding-bottom:40px;}
+    .card{background:var(--n0); border:1px solid var(--n200); border-radius:var(--radius-2xl); padding:24px; display:flex; flex-direction:column; transition:.2s; text-decoration:none; color:inherit; position:relative; overflow:hidden;}
+    .card:hover{border-color:var(--n950); transform:translateY(-3px); box-shadow:0 12px 34px -18px rgba(0,0,0,.35);}
+    .card-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .kicker{font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--n400);}
+    .year{font-size:12px; color:var(--n400); font-variant-numeric:tabular-nums;}
+    .card h3{font-size:22px; margin:16px 0 0;}
+    .card .desc{color:var(--n600); font-size:14.5px; margin:10px 0 0; flex:1;}
+    .metrics{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+    .metric{font-size:11.5px; font-weight:600; color:var(--n700); background:var(--n100); border-radius:var(--radius-sm); padding:4px 8px;}
+    .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:16px;}
+    .tag{font-size:11px; color:var(--n500); border:1px solid var(--n200); border-radius:var(--radius-full); padding:3px 9px;}
+    .card-foot{display:flex; align-items:center; gap:6px; margin-top:20px; font-size:13px; font-weight:600; color:var(--n950); opacity:0; transform:translateY(4px); transition:.2s;}
+    .card:hover .card-foot{opacity:1; transform:none;}
+    .card.nolink:hover{transform:none; border-color:var(--n300); box-shadow:none;}
+    .card.nolink{cursor:default;}
+    .empty{grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--n500);}
+
+    /* ---- CTA ---- */
+    .cta-band{margin:40px 0 0; background:var(--n950); color:var(--n0); border-radius:var(--radius-2xl); padding:56px 40px; text-align:center;}
+    .cta-band h2{font-size:clamp(28px,4vw,42px); color:var(--n0);}
+    .cta-band p{color:var(--n300); margin:14px auto 0; max-width:48ch;}
+    .cta-band a{display:inline-flex; align-items:center; gap:8px; margin-top:28px; background:var(--n0); color:var(--n950); text-decoration:none; font-weight:600; font-size:15px; padding:13px 26px; border-radius:var(--radius-full); transition:.15s;}
+    .cta-band a:hover{background:var(--n200);}
+
+    /* ---- Footer ---- */
+    footer{border-top:1px solid var(--n200); padding:40px 0; margin-top:56px; color:var(--n500); font-size:13px;}
+    .foot-inner{display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center;}
+
+    @media (max-width:640px){
+      .hero{padding:56px 0 30px;}
+      .stats{gap:28px;}
+      .controls{top:56px;}
+      .search input,.search input:focus{width:100%;}
+      .search{flex:1;}
+      .cta-band{padding:40px 24px;}
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand"><span class="dot">2·1</span> 2one Solutions</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="https://2one.solutions" target="_blank" rel="noopener">About</a>
+        <a class="cta" href="https://2one.solutions" target="_blank" rel="noopener">Let's collab</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero wrap" id="top">
+    <span class="eyebrow">Selected Work</span>
+    <h1>Design and product that moves businesses forward.</h1>
+    <p>2one is a design and product studio working across strategy, branding, UX, and digital transformation. A selection of the work we're proud of.</p>
+    <div class="stats">
+      <div class="stat"><div class="num" id="stat-projects">0</div><div class="lbl">Projects</div></div>
+      <div class="stat"><div class="num" id="stat-cats">0</div><div class="lbl">Disciplines</div></div>
+      <div class="stat"><div class="num">7+</div><div class="lbl">Years</div></div>
+      <div class="stat"><div class="num">20+</div><div class="lbl">Clients</div></div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="controls">
+      <div class="wrap">
+        <div class="controls-row">
+          <div class="chips" id="cat-chips"></div>
+          <div class="search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input id="search" type="text" placeholder="Search work…" aria-label="Search work" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="meta-line"><span id="result-count"></span><span id="active-filter"></span></div>
+      <div class="grid" id="grid"></div>
+
+      <div class="cta-band">
+        <h2>Have a project in mind?</h2>
+        <p>We partner with teams to design brands, products, and experiences that perform.</p>
+        <a href="https://2one.solutions" target="_blank" rel="noopener">Start a project <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot-inner">
+      <span>© 2026 2one Solutions</span>
+      <span>Design · Product · Branding · Digital Transformation</span>
+    </div>
+  </footer>
+
+  <script>
+    // One unified 2one portfolio. Duplicate case studies merged into single entries.
+    const PROJECTS = [
+      { title:"Bidly", year:"2024", tags:["Product Design","Service Design","Web","SaaS"],
+        desc:"A scalable SaaS platform transforming construction procurement complexity into an intuitive, educational experience.",
+        metrics:[], url:"https://2one.solutions/portfolio/bidly/" },
+      { title:"Revoize", year:"2025", tags:["Branding","UX Design"],
+        desc:"A complete brand and experience system defining Revoize's identity, voice, and product interface.",
+        metrics:[], url:"https://2one.solutions/portfolio/revoize/" },
+      { title:"Unified Experiential Learning — University of Ottawa", year:"2024", tags:["Digital Transformation","UX Design"],
+        desc:"An end-to-end experiential-learning experience designed for the University of Ottawa.",
+        metrics:[], url:"https://2one.solutions/portfolio/unified-experiential-learning-university-of-ottawa/" },
+      { title:"LeadSquared", year:"", tags:["Business Analysis","Solution Design"],
+        desc:"Translating business needs into actionable strategies with tight stakeholder alignment — recognised with a 2X Spotlight Award for Solution Design.",
+        metrics:["2X Spotlight Award"], url:"https://www.leadsquared.com/" },
+      { title:"Clotheslyne", year:"", tags:["Mobile","Web","Product Design"],
+        desc:"Redesigning a dual-sided laundry platform to streamline bookings and support home-based earners.",
+        metrics:["65% order completion","40% less pricing confusion","46% higher job acceptance"], url:"https://rajbaldania.com/clotheslyne" },
+      { title:"EL 2.0", year:"", tags:["SaaS","Web","Product Design"],
+        desc:"Employer platform rebuild enhancing job posting and connections to student opportunities.",
+        metrics:["40% faster job posting","35% fewer nav errors"], url:"https://rajbaldania.com/el2" },
+      { title:"Truelink Media", year:"", tags:["SaaS","Web","Branding"],
+        desc:"A cohesive SaaS ecosystem for digital signage, combining creative control with automation.",
+        metrics:["5x faster ad scheduling","100% less external tooling"], url:"https://rajbaldania.com/#work" },
+      { title:"Carloman Systems", year:"", tags:["Branding"],
+        desc:"Brand identity redesign for an industrial automation firm — conveying complex engineering through contemporary visuals.",
+        metrics:[], url:"https://rajbaldania.com/carloman-systems" },
+      { title:"Pulse", year:"", tags:["App","Branding"],
+        desc:"A smart hardware orchestration system for monitoring and optimising AI workstations.",
+        metrics:[], url:"https://rajbaldania.com/#work" },
+    ];
+
+    let activeCat = "all";
+    let query = "";
+
+    const grid = document.getElementById("grid");
+    const catChips = document.getElementById("cat-chips");
+    const searchInput = document.getElementById("search");
+
+    document.getElementById("stat-projects").textContent = PROJECTS.length;
+    const allCats = [...new Set(PROJECTS.flatMap(p => p.tags))].sort();
+    document.getElementById("stat-cats").textContent = allCats.length;
+
+    function renderCatChips(){
+      const cats = ["all", ...allCats];
+      catChips.innerHTML = cats.map(c =>
+        `<button class="chip${c===activeCat?' active':''}" data-cat="${c}">${c==="all"?`All work <span class="cnt">${PROJECTS.length}</span>`:c}</button>`).join("");
+    }
+    renderCatChips();
+
+    function render(){
+      const filtered = PROJECTS.filter(p => {
+        const okCat = activeCat === "all" || p.tags.includes(activeCat);
+        const q = query.trim().toLowerCase();
+        const okQ = !q || (p.title + " " + p.desc + " " + p.tags.join(" ")).toLowerCase().includes(q);
+        return okCat && okQ;
+      });
+
+      document.getElementById("result-count").textContent =
+        `${filtered.length} project${filtered.length!==1?"s":""}`;
+      document.getElementById("active-filter").textContent =
+        activeCat==="all" ? "Showing everything" : activeCat;
+
+      if(!filtered.length){
+        grid.innerHTML = `<div class="empty">No projects match these filters.<br/>Try clearing the search or picking “All work”.</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(p => {
+        const hasLink = p.url && p.url !== "#";
+        const tag = hasLink ? "a" : "div";
+        const attrs = hasLink ? `href="${p.url}" target="_blank" rel="noopener"` : "";
+        return `<${tag} class="card${hasLink?"":" nolink"}" ${attrs}>
+          <div class="card-top">
+            <span class="kicker">${p.tags[0]}</span>
+            ${p.year?`<span class="year">${p.year}</span>`:""}
+          </div>
+          <h3>${p.title}</h3>
+          <p class="desc">${p.desc}</p>
+          ${p.metrics.length?`<div class="metrics">${p.metrics.map(m=>`<span class="metric">${m}</span>`).join("")}</div>`:""}
+          <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
+          ${hasLink?`<div class="card-foot">View case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></div>`:""}
+        </${tag}>`;
+      }).join("");
+    }
+
+    catChips.addEventListener("click", e => {
+      const b = e.target.closest("[data-cat]"); if(!b) return;
+      activeCat = b.dataset.cat;
+      catChips.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c===b));
+      render();
+    });
+    searchInput.addEventListener("input", e => { query = e.target.value; render(); });
+
+    render();
+  </script>
+</body>
+</html>
