@@ -73,7 +73,15 @@
     .card:hover{border-color:var(--n950); transform:translateY(-3px); box-shadow:0 12px 34px -18px rgba(0,0,0,.35);}
     .thumb{position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; border-bottom:1px solid var(--n200); background:var(--n100);}
     .thumb svg{position:absolute; inset:0; width:100%; height:100%; display:block; transition:transform .35s ease;}
-    .card:hover .thumb svg{transform:scale(1.04);}
+    .thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; transition:transform .35s ease;}
+    .card:hover .thumb svg, .card:hover .thumb img{transform:scale(1.04);}
+    .thumb-label{position:absolute; left:12px; bottom:12px; z-index:2; display:inline-flex; align-items:center; gap:6px; font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--n0); background:rgba(0,0,0,.55); backdrop-filter:blur(4px); padding:5px 10px; border-radius:var(--radius-full);}
+    .soon-pill{position:absolute; right:12px; top:12px; z-index:2; font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--n950); background:var(--n0); padding:5px 11px; border-radius:var(--radius-full); box-shadow:0 2px 10px -2px rgba(0,0,0,.3);}
+    .card.soon{opacity:1;}
+    .card.soon .thumb img{filter:grayscale(1) contrast(.95); opacity:.72;}
+    .card.soon:hover{transform:none; border-color:var(--n300); box-shadow:none;}
+    .card.soon:hover .thumb img{transform:none;}
+    .card-foot.soon-foot{opacity:1; transform:none; color:var(--n500);}
     .card-body{padding:22px 24px 24px; display:flex; flex-direction:column; flex:1;}
     .card-top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
     .kicker{font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:var(--n400);}
@@ -190,31 +198,31 @@
     const PROJECTS = [
       { title:"Bidly", year:"2024", tags:["Product Design","Service Design","Web","SaaS"],
         desc:"A scalable SaaS platform transforming construction procurement complexity into an intuitive, educational experience.",
-        metrics:[], url:"https://2one.solutions/portfolio/bidly/" },
+        metrics:[], url:"https://2one.solutions/portfolio/bidly/", img:"assets/projects/bidly.png" },
       { title:"Revoize", year:"2025", tags:["Branding","UX Design"],
         desc:"A complete brand and experience system defining Revoize's identity, voice, and product interface.",
-        metrics:[], url:"https://2one.solutions/portfolio/revoize/" },
+        metrics:[], url:"https://2one.solutions/portfolio/revoize/", img:"assets/projects/revoize.jpg" },
       { title:"Unified Experiential Learning — University of Ottawa", year:"2024", tags:["Digital Transformation","UX Design"],
         desc:"An end-to-end experiential-learning experience designed for the University of Ottawa.",
-        metrics:[], url:"https://2one.solutions/portfolio/unified-experiential-learning-university-of-ottawa/" },
-      { title:"LeadSquared", year:"", tags:["Business Analysis","Solution Design"],
-        desc:"Translating business needs into actionable strategies with tight stakeholder alignment — recognised with a 2X Spotlight Award for Solution Design.",
-        metrics:["2X Spotlight Award"], url:"https://www.leadsquared.com/" },
+        metrics:[], url:"https://2one.solutions/portfolio/unified-experiential-learning-university-of-ottawa/", img:"assets/projects/uottawa.png" },
+      { title:"LeadSquared", year:"", tags:["Solution Design","Business Analysis"],
+        desc:"Solution design for LeadSquared — translating business needs into actionable strategies with tight stakeholder alignment, recognised with a 2X Spotlight Award for Solution Design.",
+        metrics:["2X Spotlight Award — Solution Design"], url:"https://www.leadsquared.com/" },
       { title:"Clotheslyne", year:"", tags:["Mobile","Web","Product Design"],
         desc:"Redesigning a dual-sided laundry platform to streamline bookings and support home-based earners.",
-        metrics:["65% order completion","40% less pricing confusion","46% higher job acceptance"], url:"https://rajbaldania.com/clotheslyne" },
+        metrics:["65% order completion","40% less pricing confusion","46% higher job acceptance"], url:"https://rajbaldania.com/clotheslyne", img:"assets/projects/clotheslyne.jpg" },
       { title:"EL 2.0", year:"", tags:["SaaS","Web","Product Design"],
         desc:"Employer platform rebuild enhancing job posting and connections to student opportunities.",
-        metrics:["40% faster job posting","35% fewer nav errors"], url:"https://rajbaldania.com/el2" },
-      { title:"Truelink Media", year:"", tags:["SaaS","Web","Branding"],
-        desc:"A cohesive SaaS ecosystem for digital signage, combining creative control with automation.",
-        metrics:["5x faster ad scheduling","100% less external tooling"], url:"https://rajbaldania.com/#work" },
+        metrics:["40% faster job posting","35% fewer nav errors"], url:"https://rajbaldania.com/el2", img:"assets/projects/el2.png" },
       { title:"Carloman Systems", year:"", tags:["Branding"],
         desc:"Brand identity redesign for an industrial automation firm — conveying complex engineering through contemporary visuals.",
-        metrics:[], url:"https://rajbaldania.com/carloman-systems" },
+        metrics:[], url:"https://rajbaldania.com/carloman-systems", img:"assets/projects/carloman.png" },
+      { title:"Truelink Media", year:"", tags:["SaaS","Web","Branding"],
+        desc:"A cohesive SaaS ecosystem for digital signage, combining creative control with automation.",
+        metrics:["5x faster ad scheduling","100% less external tooling"], url:"", img:"assets/projects/truelink.jpg", soon:true },
       { title:"Pulse", year:"", tags:["App","Branding"],
         desc:"A smart hardware orchestration system for monitoring and optimising AI workstations.",
-        metrics:[], url:"https://rajbaldania.com/#work" },
+        metrics:[], url:"", img:"assets/projects/pulse.jpg", soon:true },
     ];
 
     // 2one wordmark (from 2one-design-library brand assets) for thumbnail watermarks.
@@ -300,11 +308,21 @@
 
       grid.innerHTML = filtered.map(p => {
         const idx = PROJECTS.indexOf(p);
-        const hasLink = p.url && p.url !== "#";
+        const hasLink = !p.soon && p.url && p.url !== "#";
         const tag = hasLink ? "a" : "div";
         const attrs = hasLink ? `href="${p.url}" target="_blank" rel="noopener"` : "";
-        return `<${tag} class="card${hasLink?"":" nolink"}" ${attrs}>
-          <div class="thumb">${makeThumb(p, idx)}</div>
+        const cover = p.img
+          ? `<img src="${p.img}" alt="${p.title}" loading="lazy" />
+             <span class="thumb-label">${p.tags[0]}</span>`
+          : makeThumb(p, idx);
+        const foot = p.soon
+          ? `<div class="card-foot soon-foot">Case study coming soon</div>`
+          : (hasLink ? `<div class="card-foot">View case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></div>` : "");
+        return `<${tag} class="card${hasLink?"":" nolink"}${p.soon?" soon":""}" ${attrs}>
+          <div class="thumb">
+            ${cover}
+            ${p.soon?`<span class="soon-pill">Coming soon</span>`:""}
+          </div>
           <div class="card-body">
             <div class="card-top">
               <span class="kicker">${p.tags[0]}</span>
@@ -314,7 +332,7 @@
             <p class="desc">${p.desc}</p>
             ${p.metrics.length?`<div class="metrics">${p.metrics.map(m=>`<span class="metric">${m}</span>`).join("")}</div>`:""}
             <div class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join("")}</div>
-            ${hasLink?`<div class="card-foot">View case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M9 7h8v8"/></svg></div>`:""}
+            ${foot}
           </div>
         </${tag}>`;
       }).join("");
